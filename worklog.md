@@ -1,5 +1,6 @@
 # 1.15
 Test the connection of server, try the hello sample.
+
 puckpone:naive$ clang++ -lcudart -L$COREX_HOME/lib he.cu -o he
 
 puckpone:naive$ ./he
@@ -14,4 +15,7 @@ read matmul code
 
 # 1.18
 add alias nvcc='clang++ -lcudart -L$COREX_HOME/lib' to ~/.bashrc
+
 read softmax code
+
+make TinyInfiniTensor
