@@ -10,7 +10,7 @@ include_directories(${Python3_INCLUDE_DIRS})
 set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -O3")
 
 # 添加选项控制不同的编译方式
-option(USE_CUDA "Enable CUDA compilation" OFF)
+option(USE_CUDA "Enable CUDA compilation" ON)
 option(USE_BANG "Enable BANG compilation" OFF)
 option(USE_CPU "Enable CPU-only compilation" OFF)
 

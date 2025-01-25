@@ -19,7 +19,7 @@ def gather(rank, axis, inputTensor, indexTensor):
     return outTensor
 def test(inputShape, indexShape, axis, test_dtype, device):
     print(
-        f"Testing Softmax on {device} with x_shape:{inputShape} , indice_shape:{indexShape}, axis:{axis} ,dtype:{test_dtype}"
+        f"Testing Gather on {device} with x_shape:{inputShape} , indice_shape:{indexShape}, axis:{axis} ,dtype:{test_dtype}"
     )
     inputTensor = torch.rand(inputShape, device=device, dtype=test_dtype)
 
@@ -37,11 +37,11 @@ def test(inputShape, indexShape, axis, test_dtype, device):
     if test_dtype == torch.float32:
         if device == "cuda":
             torch_gather_time = performance.CudaProfile((gather, (rank, axis, inputTensor, indexTensor)))
-            custom_gather_time = 0
+            custom_gather_time = performance.CudaProfile((lib.gather_nv_f32, (input_ptr, index_ptr, output_ptr, ctypes.c_int(rank), ctypes.c_int(axis)))) # the name 'lib.gather_nv_f32' is defined at extern "C" in .cu file
     if test_dtype == torch.float16:
         if device == "cuda":
             torch_gather_time = performance.CudaProfile((gather, (rank, axis, inputTensor, indexTensor)))
-            custom_gather_time = 0
+            custom_gather_time = performance.CudaProfile((lib.gather_nv_f32, (input_ptr, index_ptr, output_ptr, ctypes.c_int(rank), ctypes.c_int(axis))))
     performance.logBenchmark(torch_gather_time, custom_gather_time)
 
     tmpa = outTensor.to('cpu').numpy().flatten()
