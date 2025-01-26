@@ -94,11 +94,11 @@ void gatherLaunch(void const *input, void const *indices, void *output, int stri
             <<<grid_dim, block_dim>>>((T *)input, (Tind *)indices, (T *)output, stride, indSize);
     }
 }
-extern "C" void gather_nv_f32(void const *input, void const *indices, void *output, int stride, int indSize, int othersize)
-{
+
+extern "C" void gather_nv_f32(void const *input, void const *indices, void *output, int stride, int indSize, int othersize) {
     gatherLaunch<float, uint64_t>(input, indices, output, stride, indSize, othersize);
 }
-extern "C" void gather_nv_f16(void const *input, void const *indices, void *output, int stride, int indSize, int othersize)
-{
+
+extern "C" void gather_nv_f16(void const *input, void const *indices, void *output, int stride, int indSize, int othersize) {
     gatherLaunch<half, uint64_t>(input, indices, output, stride, indSize, othersize);
 }
