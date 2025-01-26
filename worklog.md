@@ -97,5 +97,16 @@ echo 'export PS1="\u \$(basename \$(dirname \$PWD))/\$(basename \$PWD) \$ "' >> 
 source ~/.bashrc
 ```
 
+set ssh
+```
+ssh-keygen -t rsa -b 4096 -C "puckpone@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+
+git config --global user.name "puckpone"
+git config --global user.email "puckpone@gmail.com"
+```
+
 
 
