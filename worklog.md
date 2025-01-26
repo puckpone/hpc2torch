@@ -81,3 +81,21 @@ use iluvatar branch
 
 read sample code , try to complete gather.
 
+# 1.26
+I caused the server to crash yesterday while testing the CUDA code
+Reason: I thought ctrl-z was to end the task, but in reality it is suspended and running in the background. Ending the task is ctrl-c
+
+Quickly initialize the server:
+
+```
+echo "alias _nvcc='clang++ -lcudart -L\$COREX_HOME/lib'" >> ~/.bashrc
+echo "export COREX_HOME=/usr/local/corex" >> ~/.bashrc
+echo "export PATH=\$PATH:\$COREX_HOME/bin" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$COREX_HOME/lib" >> ~/.bashrc
+echo "export PYTHONPATH=/usr/local/corex/lib64/python3/dist-packages" >> ~/.bashrc
+echo 'export PS1="\u \$(basename \$(dirname \$PWD))/\$(basename \$PWD) \$ "' >> ~/.bashrc
+source ~/.bashrc
+```
+
+
+
