@@ -82,6 +82,18 @@ use iluvatar branch
 read sample code , try to complete gather.
 
 # 1.26
+
+compelete loop unfolding optimization
+
+original version:
+```
+commit 09c651943d222b3e20af9a879c17823fa948e8b4
+```
+loop unfolding version:
+```
+
+```
+
 I caused the server to crash yesterday while testing the CUDA code
 Reason: I thought ctrl-z was to end the task, but in reality it is suspended and running in the background. Ending the task is ctrl-c
 
