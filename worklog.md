@@ -87,11 +87,11 @@ compelete loop unfolding optimization
 
 original version:
 ```
-commit 09c651943d222b3e20af9a879c17823fa948e8b4
+git reset --hard 09c651943d222b3e20af9a879c17823fa948e8b4
 ```
 loop unfolding version:
 ```
-
+git reset --hard ee9c9c6984a0134a230acececc8417fe304fcaa2
 ```
 
 I caused the server to crash yesterday while testing the CUDA code
